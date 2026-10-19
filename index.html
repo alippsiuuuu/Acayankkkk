@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff1f5">
+  <title>For Cantikkk ♡</title>
+  <style>
+    :root {
+      --pink: #f8b9cc;
+      --pink-dark: #d95f8a;
+      --rose: #a93e67;
+      --cream: #fff9f6;
+      --ink: #633b4b;
+      --soft: #ffe8ef;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff3f6 0%, #fffaf7 48%, #ffeef3 100%);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+    button { font: inherit; cursor: pointer; }
+    .wrap { width: min(920px, 100% - 30px); margin: auto; }
+    .hero {
+      min-height: 94vh; display: grid; place-items: center; text-align: center;
+      padding: 58px 18px 48px; position: relative; overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: "♡"; position: absolute; color: #f4a8c0; opacity: .45;
+      font-size: clamp(90px, 18vw, 180px); transform: rotate(-15deg);
+    }
+    .hero::before { left: -30px; top: 7%; }
+    .hero::after { right: -25px; bottom: 5%; transform: rotate(18deg); }
+    .hero-card {
+      position: relative; z-index: 1; width: min(620px, 100%); padding: clamp(28px, 6vw, 54px) 20px;
+      border: 1px solid #f7d3df; border-radius: 30px; background: rgba(255,255,255,.72);
+      box-shadow: 0 18px 60px rgba(190, 100, 130, .12);
+    }
+    .eyebrow { text-transform: uppercase; letter-spacing: .19em; font-size: .72rem; color: var(--pink-dark); font-weight: 800; }
+    h1 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(2.5rem, 9vw, 5rem); line-height: 1.05; margin: 16px 0; color: var(--rose); }
+    h2 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 6vw, 3rem); margin: 0 0 12px; color: var(--rose); }
+    p { line-height: 1.8; }
+    .lead { max-width: 470px; margin: 0 auto 24px; }
+    .sparkle { font-size: 1.7rem; letter-spacing: .35em; }
+    .btn {
+      border: 0; border-radius: 999px; padding: 13px 22px; color: white; font-weight: 800;
+      background: linear-gradient(135deg, #e77da1, #d95f8a); box-shadow: 0 8px 22px #e77da144;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px #e77da155; }
+    .btn.secondary { background: #fff; color: var(--rose); border: 1px solid #f0bdce; box-shadow: none; }
+    section { padding: 65px 0; }
+    .section-head { text-align: center; margin-bottom: 28px; }
+    .section-head p { margin: 0 auto; max-width: 550px; }
+    .letter-box {
+      max-width: 690px; margin: auto; text-align: center; background: #fff;
+      border: 1px solid #f4c9d7; border-radius: 25px; padding: 28px 22px;
+      box-shadow: 0 14px 40px #c46d8b12;
+    }
+    .envelope { font-size: 4rem; display: block; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+    .letter { display: none; text-align: left; margin: 24px auto 0; max-width: 560px; padding: 23px; border-radius: 18px; background: #fff6f8; white-space: pre-line; }
+    .letter.show { display: block; animation: rise .5s ease both; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .photo-card {
+      background: white; padding: 10px 10px 16px; border-radius: 8px; box-shadow: 0 10px 24px #a94c6c15;
+      transform: rotate(-2deg); transition: transform .2s;
+    }
+    .photo-card:nth-child(2) { transform: rotate(2deg); }
+    .photo-card:nth-child(3) { transform: rotate(-1deg); }
+    .photo-card:hover { transform: rotate(0) translateY(-4px); }
+    .photo-slot {
+      height: 230px; width: 100%; display: grid; place-items: center; overflow: hidden;
+      background: linear-gradient(135deg, #ffe0e9, #fff0d9); color: #a34c6d; text-align: center; padding: 12px;
+      border-radius: 4px; font-size: .9rem;
+    }
+    .photo-slot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .caption { text-align: center; margin: 13px 3px 0; font-family: Georgia, serif; }
+    .music-card, .surprise-card {
+      max-width: 690px; margin: auto; border-radius: 24px; border: 1px solid #f4c9d7;
+      background: rgba(255,255,255,.8); padding: 28px 22px; text-align: center;
+    }
+    audio { width: min(420px, 100%); margin: 16px auto 0; display: block; }
+    .small-note { font-size: .86rem; color: #936778; }
+    .surprise-message { display: none; margin: 22px auto 0; font-family: Georgia, serif; font-size: clamp(1.3rem, 4vw, 1.8rem); color: var(--rose); line-height: 1.55; }
+    .surprise-message.show { display: block; animation: rise .6s ease both; }
+    footer { padding: 32px 15px 44px; text-align: center; font-size: .9rem; color: #9b6c7e; }
+    .heart {
+      position: fixed; bottom: -30px; z-index: 10; pointer-events: none; animation: drift 5s linear forwards;
+      color: #e77da1; font-size: 20px;
+    }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes drift { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+    @media (max-width: 620px) {
+      .hero { min-height: 88vh; }
+      section { padding: 48px 0; }
+      .gallery { grid-template-columns: 1fr; gap: 20px; width: min(360px, 100%); margin: auto; }
+      .photo-slot { height: 280px; }
+      .photo-card, .photo-card:nth-child(2), .photo-card:nth-child(3) { transform: rotate(0); }
+      .letter-box, .music-card, .surprise-card { padding: 24px 17px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="home">
+    <div class="hero-card">
+      <div class="sparkle">✧ ♡ ✧</div>
+      <p class="eyebrow">ungkapan kata-kata lewat cerita cinta, happiest birthday</p>
+      <h1>Atsa Cahya Kusumaningrum ♡</h1>
+      <p class="lead">Halooo ndut, aku ada little gift buat kamu di salah satu hari yang istimewaa buat aku dan pastinya buat kamu jugaaa !!!!.</p>
+      <button class="btn" onclick="document.getElementById('letter-section').scrollIntoView({behavior:'smooth'});">Dibukaa yaaa ♡</button>
+      <p class="small-note">Made with lots of love, just for you</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="letter-section">
+      <div class="section-head">
+        <p class="eyebrow">open when you're ready</p>
+        <h2>A little letter for you</h2>
+        <p>Happiestt Birthdayyy sayangg.</p>
+      </div>
+      <div class="letter-box">
+        <span class="envelope">💌</span>
+        <p><strong>Untuk Atsa Cahya Kusumaningrum,</strong><br>Dibuka yaa ndutt, ada pidato singkat asbun Prabowo Gibran.</p>
+        <button class="btn" id="open-letter">GASSSS JOSJISS 💗</button>
+        <div class="letter" id="letter">
+          Haloo ndutt, cintakuu. Selamat ulang tahun, yaa. ♡
+
+          Semoga di umur kamu yang baru hari ini (23 tahun) hal-hal baik selalu menyertai kamu ya ndott, semoga kamu dikasih kesehatan, kekuatan, dipermudah segala urusanya, dilancarkan skripsinya, dimurahkan rezekinyaa, semoga hal hal yang kamu pengenin bisa tercapai di umur yang sekarang ya ndutt 💗
+
+          Makasih ndutt, kamu udah baik banget sama aku, bangunin aku pagi pagi, care sama aku, nemenin aku dari mulai kuliah, skripsi sampe sekarang udah kerjaa. Menurutku ini freak, tapi kamu berarti banget buat aku, aku sayanggg banget sama kamuu. Makasih udah jadi tempat aku cerita, tempat aku pulang, tempat aku nguamokk, curhat, dan banyak lagiiii
+
+          Ulang tahun hari ini rasanya beda yaa sama sebelum sebelumnyaa, hari ini jarak kita 470 km njirr, tapi jangan sedih yaaa ndott, aku emang gabisa nemenin secara fisik kamu di sana, tapi aku tetep berusaha buat bisa hadir di setiap proses kamu ndutt, aku selalu support kamu dari jauh apapun yang lagi kamu kerjain nduttt, aku supporter nomer 1 Atsa Cahya Kusumaningrumm, kalo kamu ada uneg uneg atau apapun itu jangan ragu buat selalu cerita ke aku yaaa, aku bangga sama setiap proses yang udah kamu lewatin ndutttt, aku juga mau minta maaf yaa buat semua perbuatan, omongan, kondisi yang pernah nyakitin hati kamuuu
+
+          Mulai hari ini dan seterusnya, semoga kamu bisa ngelihat kamu sendiri seindah cara orang-orang yang menyayangimu melihatmu. Jangan lupa istirahat, bahagia, dan bangga pada dirimu sendiri, yaaa ndutttt.
+
+          Selamat bertambah usia, Cantikkk. Semoga dunia memperlakukanmu dengan lembut, dan semoga aku masih diberi kesempatan untuk ikut menyaksikan banyak hal baik yang datang ke hidupmu. Aku lihat puisi bagus di tiktok, indah sekali nduttt, ini isinyaa
+
+Nyamuk yang hinggap di dahiku
+Ia mengisap darahku
+Lalu nyamuk itu terbang dan hinggap di pipimu
+Ia mengisap darahmu
+Darah dari kita menyatu di tubuh nyamuk
+Di tubuh nyamuk itu kita menikah
+
+Pernikahan Kecil,
+Rabu Pagisyahbana, 2024
+
+
+          With lots of love,
+          Alif Surya Mahesa, S.T. ♡
+        </div>
+      </div>
+    </section>
+
+    <section id="memories">
+      <div class="section-head">
+        <p class="eyebrow">little moments, big feelings</p>
+        <h2>Our little memories 📸</h2>
+        <p>Loveyouu ndottttttt.</p>
+      </div>
+      <div class="gallery">
+        <div class="photo-card">
+          <div class="photo-slot"><span>Tambahkan foto pertama<br><small>foto1.jpg</small></span></div>
+          <p class="caption">Foto terbocilll ♡</p>
+        </div>
+        <div class="photo-card">
+          <div class="photo-slot"><span>Tambahkan foto kedua<br><small>foto2.jpg</small></span></div>
+          <p class="caption">Masih inget egoku kesenggol sama bakul bunga njirr 🌷</p>
+        </div>
+        <div class="photo-card">
+          <div class="photo-slot"><span>Tambahkan foto ketiga<br><small>foto3.jpg</small></span></div>
+          <p class="caption">Semoga ada ulang tahun yang bisa kita rayain bareng lagi yaaa ♡</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="music">
+      <div class="section-head">
+        <p class="eyebrow">press play, think of us</p>
+        <h2>A song for you 🎶</h2>
+        <p>Lagu ini yang selalu bikin aku inget sama kamu, aku menyimpan kamu di lagu ini njirr, mungkin makna nya ngga relate, tapi lagu ini yang selalu ingetin aku ke kamu.</p>
+      </div>
+      <div class="music-card">
+        <div style="font-size:2.8rem">🎧💗</div>
+        <p><strong>Our little soundtrack</strong></p>
+        <audio controls preload="metadata">
+          <source src="musik.mp3" type="audio/mpeg">
+          Browser kamu tidak mendukung pemutar audio.
+        </audio>
+        <p class="small-note">Nonton bareng lagi yuk konsernyaaa kalo udah sukses sambil naik x force .</p>
+      </div>
+    </section>
+
+    <section id="surprise">
+      <div class="section-head">
+        <p class="eyebrow">one last thing</p>
+        <h2>Before you go…</h2>
+      </div>
+      <div class="surprise-card">
+        <p>Dibukaa yaa ndudd, terakhirr, maaf aku cuma bisa bikin segini aja ehh hehehehehe.</p>
+        <button class="btn" id="surprise-btn">silahkan klik disini sayang genduddd 🎁</button>
+        <div class="surprise-message" id="surprise-message">
+          Ditunggu ya hadiahnyaa, minta tolong jangan berekspektasi tinggi ndudd, jangan lihat dari nominalnya yaa, aku juga ingat banget dulu pernah dibikinin editan yang selucu itu pas umurku 20 tahun hehehehe, aku belajar buat bikin kyk gini, memang ga selucu dan sedetail yang kamu pernah bikin ke aku, tapi aku harap kamu suka ya nduddd. Selamat ulang tahun, cantikkk. bahagia terus yaaaa, kamu punya aku dan semua orang yang sayang sama kamuuu, enjoyy your birthdayy babeee. ♡
+          <p style="font-family:'Trebuchet MS',sans-serif;font-size:1rem">♡♡♡</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    Alif Surya Mahesa ♡ Atsa Cahya Kusumaningrum<br>
+    <span>little website, lots of love</span>
+  </footer>
+
+  <script>
+    const letterButton = document.getElementById('open-letter');
+    const letter = document.getElementById('letter');
+    letterButton.addEventListener('click', () => {
+      letter.classList.toggle('show');
+      letterButton.textContent = letter.classList.contains('show') ? 'Tutup suratnya ♡' : 'Buka suratnya 💗';
+      if (letter.classList.contains('show')) letter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    const surpriseButton = document.getElementById('surprise-btn');
+    const surpriseMessage = document.getElementById('surprise-message');
+    surpriseButton.addEventListener('click', () => {
+      surpriseMessage.classList.toggle('show');
+      surpriseButton.textContent = surpriseMessage.classList.contains('show') ? 'Kejutan sudah dibuka 💖' : 'Tekan untuk kejutan terakhir 🎁';
+      for (let i = 0; i < 24; i++) setTimeout(createHeart, i * 90);
+    });
+
+    function createHeart() {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = ['♡', '♥', '💗', '✧'][Math.floor(Math.random() * 4)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6500);
+    }
+
+    // Replace the placeholder photo boxes with your own photos by following the guide.
+  </script>
+</body>
+</html>
